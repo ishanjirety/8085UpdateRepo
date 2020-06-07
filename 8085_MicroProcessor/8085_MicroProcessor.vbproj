@@ -98,6 +98,12 @@
     <Compile Include="Intorduction.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="LoginForm1.Designer.vb">
+      <DependentUpon>LoginForm1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="LoginForm1.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="loginpage.Designer.vb">
       <DependentUpon>loginpage.vb</DependentUpon>
     </Compile>
@@ -141,6 +147,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Intorduction.resx">
       <DependentUpon>Intorduction.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm1.resx">
+      <DependentUpon>LoginForm1.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="loginpage.resx">
       <DependentUpon>loginpage.vb</DependentUpon>

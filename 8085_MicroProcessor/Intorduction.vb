@@ -3,7 +3,7 @@
         If login = True Then
             MsgBox("Already logged in!")
         Else
-            loginpage.Show()
+            LoginForm1.Show()
         End If
     End Sub
 
@@ -11,7 +11,7 @@
         If login = True Then
             Form1.Show()
         Else
-            loginpage.Show()
+            LoginForm1.Show()
         End If
     End Sub
 

@@ -1,22 +1,22 @@
 ﻿Imports System.Data.OleDb
-Public Class loginpage
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
-        If TextBox1.Text = Nothing Then
+Public Class LoginForm1
+    Private Sub OK_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OK.Click
+        If UsernameTextBox.Text = Nothing Then
             MsgBox("Enter proper requirements!", MsgBoxStyle.Critical)
 
-        ElseIf TextBox2.Text = Nothing Then
+        ElseIf PasswordTextBox.Text = Nothing Then
             MsgBox("Enter proper requirements!", MsgBoxStyle.Critical)
-            TextBox1.Text = Nothing
-            TextBox2.Text = Nothing
+            UsernameTextBox.Text = Nothing
+            UsernameTextBox.Text = Nothing
         Else
             conn.Open()
             Dim cmd As New OleDbCommand
-            cmd = New OleDbCommand("SELECT * FROM login WHERE Nme='" + TextBox1.Text + "'and password = '" + TextBox2.Text + "'", conn)
+            cmd = New OleDbCommand("SELECT * FROM login WHERE Nme='" + UsernameTextBox.Text + "'and password = '" + PasswordTextBox.Text + "'", conn)
 
             da = New OleDbDataAdapter(cmd)
 
             da.Fill(ds)
-           
+
             Dim i As Integer
             i = ds.Tables(0).Rows.Count
             If i = 0 Then
@@ -36,7 +36,8 @@ Public Class loginpage
         End If
     End Sub
 
-    Private Sub Label3_Click(sender As System.Object, e As System.EventArgs) Handles Label3.Click
-
+    Private Sub Cancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Cancel.Click
+        Me.Close()
     End Sub
+
 End Class
