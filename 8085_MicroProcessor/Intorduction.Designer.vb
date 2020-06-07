@@ -31,6 +31,8 @@ Partial Class Intorduction
         Me.LinkLabel2 = New System.Windows.Forms.LinkLabel()
         Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.LinkLabel4 = New System.Windows.Forms.LinkLabel()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label2
@@ -77,7 +79,7 @@ Partial Class Intorduction
         Me.Label1.BackColor = System.Drawing.Color.Transparent
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(68, 9)
+        Me.Label1.Location = New System.Drawing.Point(3, 10)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(18, 25)
         Me.Label1.TabIndex = 16
@@ -90,7 +92,7 @@ Partial Class Intorduction
         Me.LinkLabel3.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LinkLabel3.ForeColor = System.Drawing.Color.White
         Me.LinkLabel3.LinkColor = System.Drawing.Color.White
-        Me.LinkLabel3.Location = New System.Drawing.Point(371, 9)
+        Me.LinkLabel3.Location = New System.Drawing.Point(288, 10)
         Me.LinkLabel3.Name = "LinkLabel3"
         Me.LinkLabel3.Size = New System.Drawing.Size(151, 25)
         Me.LinkLabel3.TabIndex = 15
@@ -105,7 +107,7 @@ Partial Class Intorduction
         Me.LinkLabel2.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LinkLabel2.ForeColor = System.Drawing.Color.White
         Me.LinkLabel2.LinkColor = System.Drawing.Color.White
-        Me.LinkLabel2.Location = New System.Drawing.Point(164, 9)
+        Me.LinkLabel2.Location = New System.Drawing.Point(93, 9)
         Me.LinkLabel2.Name = "LinkLabel2"
         Me.LinkLabel2.Size = New System.Drawing.Size(201, 25)
         Me.LinkLabel2.TabIndex = 14
@@ -120,7 +122,7 @@ Partial Class Intorduction
         Me.LinkLabel1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LinkLabel1.ForeColor = System.Drawing.Color.White
         Me.LinkLabel1.LinkColor = System.Drawing.Color.White
-        Me.LinkLabel1.Location = New System.Drawing.Point(12, 9)
+        Me.LinkLabel1.Location = New System.Drawing.Point(10, 8)
         Me.LinkLabel1.Name = "LinkLabel1"
         Me.LinkLabel1.Size = New System.Drawing.Size(65, 25)
         Me.LinkLabel1.TabIndex = 13
@@ -133,12 +135,24 @@ Partial Class Intorduction
         Me.LinkLabel4.BackColor = System.Drawing.Color.Transparent
         Me.LinkLabel4.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LinkLabel4.LinkColor = System.Drawing.Color.White
-        Me.LinkLabel4.Location = New System.Drawing.Point(80, 8)
+        Me.LinkLabel4.Location = New System.Drawing.Point(18, 9)
         Me.LinkLabel4.Name = "LinkLabel4"
         Me.LinkLabel4.Size = New System.Drawing.Size(78, 25)
         Me.LinkLabel4.TabIndex = 17
         Me.LinkLabel4.TabStop = True
         Me.LinkLabel4.Text = "Logout"
+        '
+        'Panel1
+        '
+        Me.Panel1.BackColor = System.Drawing.Color.Transparent
+        Me.Panel1.Controls.Add(Me.LinkLabel2)
+        Me.Panel1.Controls.Add(Me.LinkLabel4)
+        Me.Panel1.Controls.Add(Me.LinkLabel3)
+        Me.Panel1.Controls.Add(Me.Label1)
+        Me.Panel1.Location = New System.Drawing.Point(69, -1)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(555, 41)
+        Me.Panel1.TabIndex = 18
         '
         'Intorduction
         '
@@ -146,10 +160,7 @@ Partial Class Intorduction
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.ClientSize = New System.Drawing.Size(1364, 750)
-        Me.Controls.Add(Me.LinkLabel4)
-        Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.LinkLabel3)
-        Me.Controls.Add(Me.LinkLabel2)
+        Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.LinkLabel1)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label4)
@@ -158,6 +169,8 @@ Partial Class Intorduction
         Me.Name = "Intorduction"
         Me.Text = "Intorduction"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
+        Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -170,4 +183,5 @@ Partial Class Intorduction
     Friend WithEvents LinkLabel2 As System.Windows.Forms.LinkLabel
     Friend WithEvents LinkLabel1 As System.Windows.Forms.LinkLabel
     Friend WithEvents LinkLabel4 As System.Windows.Forms.LinkLabel
+    Friend WithEvents Panel1 As System.Windows.Forms.Panel
 End Class

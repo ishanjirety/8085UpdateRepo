@@ -3,6 +3,7 @@
         If login = True Then
             MsgBox("Already logged in!")
         Else
+            Me.Hide()
             LoginForm1.Show()
         End If
     End Sub
@@ -29,9 +30,16 @@
             MsgBox("Logged out!")
             LinkLabel1.Show()
             Label1.Show()
-            LinkLabel4.Location = New Point(80, 8)
+            Panel1.Location = New Point(69, -1)
+            Label1.Show()
         Else
-            MsgBox("Need to login!")
+            MsgBox("Currently Logged Out!", MsgBoxStyle.Information)
+            Me.Hide()
+            LoginForm1.Show()
         End If
+    End Sub
+
+    Private Sub Panel1_Paint(sender As System.Object, e As System.Windows.Forms.PaintEventArgs) Handles Panel1.Paint
+
     End Sub
 End Class

@@ -14,7 +14,6 @@ Partial Class LoginForm1
             MyBase.Dispose(disposing)
         End Try
     End Sub
-    Friend WithEvents LogoPictureBox As System.Windows.Forms.PictureBox
     Friend WithEvents UsernameLabel As System.Windows.Forms.Label
     Friend WithEvents PasswordLabel As System.Windows.Forms.Label
     Friend WithEvents UsernameTextBox As System.Windows.Forms.TextBox
@@ -31,28 +30,20 @@ Partial Class LoginForm1
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(LoginForm1))
-        Me.LogoPictureBox = New System.Windows.Forms.PictureBox
-        Me.UsernameLabel = New System.Windows.Forms.Label
-        Me.PasswordLabel = New System.Windows.Forms.Label
-        Me.UsernameTextBox = New System.Windows.Forms.TextBox
-        Me.PasswordTextBox = New System.Windows.Forms.TextBox
-        Me.OK = New System.Windows.Forms.Button
-        Me.Cancel = New System.Windows.Forms.Button
-        CType(Me.LogoPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.UsernameLabel = New System.Windows.Forms.Label()
+        Me.PasswordLabel = New System.Windows.Forms.Label()
+        Me.UsernameTextBox = New System.Windows.Forms.TextBox()
+        Me.PasswordTextBox = New System.Windows.Forms.TextBox()
+        Me.OK = New System.Windows.Forms.Button()
+        Me.Cancel = New System.Windows.Forms.Button()
+        Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.SuspendLayout()
-        '
-        'LogoPictureBox
-        '
-        Me.LogoPictureBox.Image = CType(resources.GetObject("LogoPictureBox.Image"), System.Drawing.Image)
-        Me.LogoPictureBox.Location = New System.Drawing.Point(0, 0)
-        Me.LogoPictureBox.Name = "LogoPictureBox"
-        Me.LogoPictureBox.Size = New System.Drawing.Size(165, 193)
-        Me.LogoPictureBox.TabIndex = 0
-        Me.LogoPictureBox.TabStop = False
         '
         'UsernameLabel
         '
-        Me.UsernameLabel.Location = New System.Drawing.Point(172, 24)
+        Me.UsernameLabel.BackColor = System.Drawing.Color.Transparent
+        Me.UsernameLabel.ForeColor = System.Drawing.Color.White
+        Me.UsernameLabel.Location = New System.Drawing.Point(10, 15)
         Me.UsernameLabel.Name = "UsernameLabel"
         Me.UsernameLabel.Size = New System.Drawing.Size(220, 23)
         Me.UsernameLabel.TabIndex = 0
@@ -61,7 +52,9 @@ Partial Class LoginForm1
         '
         'PasswordLabel
         '
-        Me.PasswordLabel.Location = New System.Drawing.Point(172, 81)
+        Me.PasswordLabel.BackColor = System.Drawing.Color.Transparent
+        Me.PasswordLabel.ForeColor = System.Drawing.Color.Transparent
+        Me.PasswordLabel.Location = New System.Drawing.Point(10, 72)
         Me.PasswordLabel.Name = "PasswordLabel"
         Me.PasswordLabel.Size = New System.Drawing.Size(220, 23)
         Me.PasswordLabel.TabIndex = 2
@@ -70,22 +63,22 @@ Partial Class LoginForm1
         '
         'UsernameTextBox
         '
-        Me.UsernameTextBox.Location = New System.Drawing.Point(174, 44)
+        Me.UsernameTextBox.Location = New System.Drawing.Point(12, 35)
         Me.UsernameTextBox.Name = "UsernameTextBox"
         Me.UsernameTextBox.Size = New System.Drawing.Size(220, 20)
         Me.UsernameTextBox.TabIndex = 1
         '
         'PasswordTextBox
         '
-        Me.PasswordTextBox.Location = New System.Drawing.Point(174, 101)
+        Me.PasswordTextBox.Location = New System.Drawing.Point(12, 92)
         Me.PasswordTextBox.Name = "PasswordTextBox"
-        Me.PasswordTextBox.PasswordChar = Microsoft.VisualBasic.ChrW(42)
+        Me.PasswordTextBox.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.PasswordTextBox.Size = New System.Drawing.Size(220, 20)
         Me.PasswordTextBox.TabIndex = 3
         '
         'OK
         '
-        Me.OK.Location = New System.Drawing.Point(197, 161)
+        Me.OK.Location = New System.Drawing.Point(12, 138)
         Me.OK.Name = "OK"
         Me.OK.Size = New System.Drawing.Size(94, 23)
         Me.OK.TabIndex = 4
@@ -94,36 +87,50 @@ Partial Class LoginForm1
         'Cancel
         '
         Me.Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.Cancel.Location = New System.Drawing.Point(300, 161)
+        Me.Cancel.Location = New System.Drawing.Point(115, 138)
         Me.Cancel.Name = "Cancel"
         Me.Cancel.Size = New System.Drawing.Size(94, 23)
         Me.Cancel.TabIndex = 5
         Me.Cancel.Text = "&Cancel"
         '
+        'LinkLabel1
+        '
+        Me.LinkLabel1.AutoSize = True
+        Me.LinkLabel1.BackColor = System.Drawing.Color.Transparent
+        Me.LinkLabel1.LinkColor = System.Drawing.Color.White
+        Me.LinkLabel1.Location = New System.Drawing.Point(121, 122)
+        Me.LinkLabel1.Name = "LinkLabel1"
+        Me.LinkLabel1.Size = New System.Drawing.Size(88, 13)
+        Me.LinkLabel1.TabIndex = 6
+        Me.LinkLabel1.TabStop = True
+        Me.LinkLabel1.Text = "Create New User"
+        '
         'LoginForm1
         '
         Me.AcceptButton = Me.OK
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.CancelButton = Me.Cancel
         Me.ClientSize = New System.Drawing.Size(401, 192)
+        Me.Controls.Add(Me.LinkLabel1)
         Me.Controls.Add(Me.Cancel)
         Me.Controls.Add(Me.OK)
         Me.Controls.Add(Me.PasswordTextBox)
         Me.Controls.Add(Me.UsernameTextBox)
         Me.Controls.Add(Me.PasswordLabel)
         Me.Controls.Add(Me.UsernameLabel)
-        Me.Controls.Add(Me.LogoPictureBox)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "LoginForm1"
         Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.Text = "LoginForm1"
-        CType(Me.LogoPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Text = "Emulator Login"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
+    Friend WithEvents LinkLabel1 As System.Windows.Forms.LinkLabel
 
 End Class
