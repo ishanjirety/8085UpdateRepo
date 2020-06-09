@@ -11,3 +11,5 @@ m,M=Exmem\
 s,S=string prg\
 n,N=Next,shift+n,N Memc
 .=fill
+
+

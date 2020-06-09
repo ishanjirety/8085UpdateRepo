@@ -5,11 +5,10 @@
             Me.ErrorProvider1.SetError(Me.TextBox1, "Program Name Required")
         Else
             NameCheck(TextBox1.Text)
+            Form1.ComboBox2.Items.Clear()
+            preloadedPrograms()
             Me.Close()
         End If
-
-        'NameCheckPoints(TextBox1.Text)
-        'Save()
     End Sub
 
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click

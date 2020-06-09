@@ -71,8 +71,8 @@ Public Class Form1
             strt = 0
             shft = 0
             indexCount = 0
-            ListBox1.Items.Clear()
-            ListBox2.Items.Clear()
+            'ListBox1.Items.Clear()
+            'ListBox2.Items.Clear()
             ListBox3.Items.Add("Reset Button Clicked")
             Me.ErrorProvider1.SetError(Me.Button3, "")
         End If
@@ -84,6 +84,8 @@ Public Class Form1
             Label6.Text = "Hardware State ON"
             Label6.ForeColor = Color.Green
             ListBox3.Items.Add("Hardware State Changed To ON")
+            Button2.Enabled = True
+            preloadedPrograms()
         Else
             Me.ErrorProvider1.SetError(Me.Button3, "")                  'To Prevent Double Error 
             off_click()
@@ -95,6 +97,7 @@ Public Class Form1
             Array.Clear(MemLocation, 0, MemLocation.Length)
             Array.Clear(Instructions, 0, Instructions.Length)
             ListBox3.Items.Add("Hardware State Changed To OFF")
+            ComboBox2.Items.Clear()
             chck = 1                                                'Prevent Null Exception If Once Closed
         End If
     End Sub
@@ -144,6 +147,7 @@ Public Class Form1
             If ErrorSignal = 0 Then
                 SaveSignal = True
                 el85()
+                TextBox7.Text = "8"
             End If
         End If
     End Sub
@@ -169,7 +173,7 @@ Public Class Form1
         End If
     End Sub
     Private Sub Btn_MemcNxt_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Btn_MemcNxt.Click
-        If flag = 0 Then
+        If flag = 0 Then                                                            'If Button Turned On 
             If TextBox8.Text = "8." Or TextBox8.Text = Nothing Then                 'To Check Wether 16BIT Address Is given
                 Rst()
                 err()
@@ -180,12 +184,12 @@ Public Class Form1
                 cnt = cnt + 1
                 Show_Hex()
                 If Conversion.Val(TextBox8.Text) < 3 And Conversion.Val(TextBox8.Text) > 1 Then
-                    shft = 4                        'Memory Limit Check
+                    shft = 4                                                        'Memory Limit Check
                     strt = 0
                     If cnt > 1 Then
                         TextBox4.ForeColor = Color.Firebrick
                         TextBox3.ForeColor = Color.Firebrick
-                        If Conversion.Val(TextBox5.Text) = 9 Then           'Auto Increment Last Digit If exceed 9
+                        If Conversion.Val(TextBox5.Text) = 9 Then                   'Auto Increment Last Digit If exceed 9
                             TextBox6.Text = Conversion.Val(TextBox6.Text) + 1
                             TextBox5.Text = "0"
                             temp(2) = TextBox6.Text
@@ -210,10 +214,19 @@ Public Class Form1
         TextBox4.ForeColor = Color.Red
         TextBox3.ForeColor = Color.Red
     End Sub
+    Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
+        If flag = 0 And indexCount <> 0 And SaveSignal = True Then
+            SaveWindow.Show()
+        ElseIf flag <> 0 Then
+            Me.ErrorProvider1.SetError(Me.Btn2, "Hardware State OFF")
+        ElseIf indexCount = 0 Then
+            Me.ErrorProvider1.SetError(Me.Button3, "No Program Written")
+        ElseIf SaveSignal = False Then
+            Me.ErrorProvider1.SetError(Me.Button3, "Either U Program Not Compiled Or Error Occured")
+        End If
+    End Sub
     Private Sub Btn_Fill_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Btn_Fill.Click
         If flag = 0 Then
-            'Rst()
-            'err()
             shft = 0
             syntax_check()
             If syntax_chk = 1 Then
@@ -229,9 +242,22 @@ Public Class Form1
             ListBox2.Items.Add("HTA Not Found")
             ListBox3.Items.Add("Syntax Error Generated")
         Else
-            Operation_check(count, syntax_array)    'Checks Hex Codes Working       Module DbFunctions
-            syntax_chk = 1                          'Sets Correct Syntax Signal
+            Operation_check(count, syntax_array)                                    'Checks Hex Codes Working       Module DbFunctions
+            syntax_chk = 1                                                          'Sets Correct Syntax Signal
         End If
+    End Sub
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+        ListBox3.Items.Clear()
+    End Sub
+    Private Sub Button2_Click(sender As System.Object, e As System.EventArgs) Handles Button2.Click
+        ListBox1.Items.Clear()
+        ListBox2.Items.Clear()
+        LoadProgramsToMemory()
+    End Sub
+
+    Private Sub Button5_Click(sender As System.Object, e As System.EventArgs) Handles Button5.Click
+        ListBox1.Items.Clear()
+        ListBox2.Items.Clear()
     End Sub
 
     Private Sub Btn_D_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Btn_D.Click
@@ -332,6 +358,7 @@ Public Class Form1
             err()
         End If
     End Sub
+    '''Functions'''
     Public Sub on_click()       'ON BUTTON
         en()
         Rst()
@@ -542,20 +569,34 @@ Public Class Form1
         TextBox6.Text = temp(2)
         TextBox5.Text = temp(3)
     End Sub
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
-        ListBox3.Items.Clear()
+    Public Sub Loaded()
+        TextBox8.Text = "L"
+        TextBox7.ForeColor = Color.Red
+        TextBox7.Text = "O"
+        TextBox6.Text = "A"
+        TextBox5.Text = "D"
+        TextBox4.Text = "E"
+        TextBox3.Text = "D"
+        Button2.Enabled = False
+    End Sub
+    Public Sub UnLoaded()
+        TextBox8.Text = "U"
+        TextBox7.ForeColor = Color.Red
+        TextBox7.Text = "N"
+        TextBox6.Text = "L"
+        TextBox5.Text = "O"
+        TextBox4.Text = "A"
+        TextBox3.Text = "D"
+
     End Sub
 
-    Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
-        If flag = 0 And indexCount <> 0 And SaveSignal = True Then
-            SaveWindow.Show()
-        ElseIf flag <> 0 Then
-            Me.ErrorProvider1.SetError(Me.Btn2, "Hardware State OFF")
-        ElseIf indexCount = 0 Then
-            Me.ErrorProvider1.SetError(Me.Button3, "No Program Written")
-        ElseIf SaveSignal = False Then
-            Me.ErrorProvider1.SetError(Me.Button3, "Either U Program Not Compiled Or Error Occured")
+    Private Sub Button4_Click(sender As System.Object, e As System.EventArgs) Handles Button4.Click
+        Dim msg As Integer = MsgBox("Are You Sure You Want To Unload This Code This Will Erase All Current Codes!!", MsgBoxStyle.OkCancel)
+        If msg = DialogResult.OK Then
+            Button2.Enabled = True
+            EraseData()
+            UnLoaded()
+            Button5.PerformClick()
         End If
-        'Save()
     End Sub
 End Class

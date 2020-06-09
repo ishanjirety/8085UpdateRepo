@@ -12,6 +12,7 @@
         If login = True Then
             Form1.Show()
         Else
+            Me.Hide()
             LoginForm1.Show()
         End If
     End Sub

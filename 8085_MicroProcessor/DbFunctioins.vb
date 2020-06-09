@@ -15,6 +15,11 @@ Module DbFunctioins
     Public outputPlace As String
     Public outputResult As String
     Public ErrorSignal As Integer = 0
+    Public StartMem As Integer      'Will Be used To Load Preloaded Programs
+    Public EndMem As Integer        'Will Be used To Load Preloaded Programs
+    Public OPloc As String          'Will Be used To Load Preloaded Programs
+    Public OPVal As String          'Will Be used To Load Preloaded Programs
+
     Public Sub Register_Signal(ByVal Data As String)
         Try
             conn.Close()
@@ -286,4 +291,54 @@ Module DbFunctioins
             SaveWindow.TextBox1.Text = Nothing
         End If
     End Sub
+    Public Sub preloadedPrograms()
+        conn.Close()
+        conn.Open()
+        ds.Clear()
+        cmd = New OleDbCommand("select ProgramName From SavedProgramCheckPoint ", conn)
+        da.SelectCommand = cmd
+        da.Fill(ds, "SavedProgramCheckPoint")
+        Dim a As Integer = ds.Tables("SavedProgramCheckPoint").Rows.Count - 1
+        For i As Integer = 0 To a
+            Form1.ComboBox2.Items.Add(ds.Tables("SavedProgramCheckPoint").Rows(i)(0).ToString())
+        Next
+        conn.Close()
+    End Sub
+    Public Sub LoadProgramsToMemory()
+        conn.Close()
+        conn.Open()
+
+        'Fetching Checkpoints Of Saved Program'
+        cmd = New OleDbCommand("SELECT * FROM SavedProgramCheckPoint Where ProgramName='" + Form1.ComboBox2.Text + "'", conn)
+        Dim dr As OleDbDataReader = cmd.ExecuteReader()
+        If dr.Read() Then
+            StartMem = dr.GetValue(1)
+            EndMem = dr.GetValue(2)
+            OPloc = dr.GetValue(3)
+            OPVal = dr.GetValue(4)
+        End If
+
+        'Inserting Output In Instructions Table'
+        cmd = New OleDbCommand("UPDATE Instructions SET Hex='" + OPVal + "' WHERE Memory='" + OPloc + "'", conn)
+        cmd.ExecuteNonQuery()
+
+        'Fetching Data From SavedPrograms And Inserting into Instructions'
+
+        Dim i As Integer = StartMem
+        While i <> EndMem + 1
+            Dim Ins As String = i
+            cmd = New OleDbCommand("SELECT * From SavedPrograms WHERE Memory='" + Ins + "' AND PrgName='" + Form1.ComboBox2.Text + "'", conn)
+            dr = cmd.ExecuteReader()
+            If dr.Read() Then
+                Form1.ListBox1.Items.Add(i)
+                Form1.ListBox2.Items.Add(dr.GetValue(2))
+                cmd = New OleDbCommand("UPDATE Instructions SET Hex='" + dr.GetValue(2) + "' WHERE Memory='" + Ins + "'", conn)
+                cmd.ExecuteNonQuery()
+            End If
+            i += 1
+        End While
+        Form1.Loaded()
+        conn.Close()
+    End Sub
+
 End Module
