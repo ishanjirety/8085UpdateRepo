@@ -69,3 +69,4 @@ C:\Users\ADMIN\Desktop\8085\8085\8085_MicroProcessor\obj\x86\Debug\en\8085_Micro
 C:\Users\ADMIN\Desktop\8085\8085\8085_MicroProcessor\obj\x86\Debug\_8085_MicroProcessor.LoginForm1.resources
 C:\Users\ADMIN\Desktop\8085\8085\8085_MicroProcessor\obj\x86\Debug\_8085_MicroProcessor.Key.resources
 C:\Users\ADMIN\Desktop\8085\8085\8085_MicroProcessor\obj\x86\Debug\_8085_MicroProcessor.UserCreation.resources
+C:\Users\ADMIN\Desktop\8085\8085\8085_MicroProcessor\obj\x86\Debug\8085_MicroProcessor.vbprojResolveAssemblyReference.cache

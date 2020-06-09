@@ -3,7 +3,6 @@
         If TextBox1.Text = "e8fae442-e726" Then
             Me.Close()
             UserCreation.Show()
-
         Else
             MsgBox("Invalid Key", MsgBoxStyle.Critical)
         End If
