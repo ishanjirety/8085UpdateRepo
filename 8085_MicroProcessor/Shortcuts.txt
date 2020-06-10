@@ -1,0 +1,15 @@
+﻿r,R=Reset\
+c,C= C\
+V,v=VCT INT\
+shift=shift\
+x,X=exreg shift+x,X=si\
+I,i=INS Data\
+d,D=delete data\
+g,G=del GO\
+b,B=InsBM\
+m,M=Exmem\
+s,S=string prg\
+n,N=Next,shift+n,N Memc
+.=fill
+
+
