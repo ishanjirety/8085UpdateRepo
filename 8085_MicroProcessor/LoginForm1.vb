@@ -46,7 +46,7 @@ Public Class LoginForm1
                 login = True
                 Intorduction.LinkLabel1.Hide()
                 Intorduction.Label1.Hide()
-                Intorduction.Panel1.Location = New Point(3, -1)
+                'Intorduction.Panel1.Location = New Point(3, -1)
                 LinkLabel1.Hide()
                 conn.Close()
                 Intorduction.Show()
@@ -61,7 +61,7 @@ Public Class LoginForm1
         Intorduction.Show()
     End Sub
 
-    Private Sub LinkLabel1_LinkClicked(sender As System.Object, e As System.Windows.Forms.LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
+    Private Sub LinkLabel1_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
         'Me.Close()
         Key.Show()
     End Sub

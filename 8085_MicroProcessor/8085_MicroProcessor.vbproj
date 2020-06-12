@@ -201,6 +201,7 @@
     <None Include="Resources\DSEG7Modern-Bold.ttf" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="text file.css" />
     <None Include="Resources\download1.png" />
     <None Include="Resources\download2.png" />
     <Content Include="Shortcuts.txt" />

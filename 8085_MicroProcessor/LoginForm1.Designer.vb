@@ -65,7 +65,7 @@ Partial Class LoginForm1
         '
         Me.UsernameTextBox.Location = New System.Drawing.Point(12, 35)
         Me.UsernameTextBox.Name = "UsernameTextBox"
-        Me.UsernameTextBox.Size = New System.Drawing.Size(220, 20)
+        Me.UsernameTextBox.Size = New System.Drawing.Size(158, 20)
         Me.UsernameTextBox.TabIndex = 1
         '
         'PasswordTextBox
@@ -73,7 +73,7 @@ Partial Class LoginForm1
         Me.PasswordTextBox.Location = New System.Drawing.Point(12, 92)
         Me.PasswordTextBox.Name = "PasswordTextBox"
         Me.PasswordTextBox.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.PasswordTextBox.Size = New System.Drawing.Size(220, 20)
+        Me.PasswordTextBox.Size = New System.Drawing.Size(158, 20)
         Me.PasswordTextBox.TabIndex = 3
         '
         'OK
@@ -98,7 +98,7 @@ Partial Class LoginForm1
         Me.LinkLabel1.AutoSize = True
         Me.LinkLabel1.BackColor = System.Drawing.Color.Transparent
         Me.LinkLabel1.LinkColor = System.Drawing.Color.White
-        Me.LinkLabel1.Location = New System.Drawing.Point(121, 122)
+        Me.LinkLabel1.Location = New System.Drawing.Point(70, 118)
         Me.LinkLabel1.Name = "LinkLabel1"
         Me.LinkLabel1.Size = New System.Drawing.Size(88, 13)
         Me.LinkLabel1.TabIndex = 6
@@ -111,8 +111,9 @@ Partial Class LoginForm1
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.CancelButton = Me.Cancel
-        Me.ClientSize = New System.Drawing.Size(401, 192)
+        Me.ClientSize = New System.Drawing.Size(388, 184)
         Me.Controls.Add(Me.LinkLabel1)
         Me.Controls.Add(Me.Cancel)
         Me.Controls.Add(Me.OK)

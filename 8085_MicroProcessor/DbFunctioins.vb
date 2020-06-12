@@ -2,6 +2,7 @@
 Imports System.Data.OleDb
 Module DbFunctioins
     Public login As Boolean
+
     Public MemLocation(50) As String       'Memory Locations
     Public Instructions(50) As String      'Instructioins
     Public da As New OleDbDataAdapter
@@ -19,6 +20,8 @@ Module DbFunctioins
     Public EndMem As Integer        'Will Be used To Load Preloaded Programs
     Public OPloc As String          'Will Be used To Load Preloaded Programs
     Public OPVal As String          'Will Be used To Load Preloaded Programs
+    Public memory As Integer
+    Public hex As String
 
     Public Sub Register_Signal(ByVal Data As String)
         Try
@@ -343,5 +346,65 @@ Module DbFunctioins
         Form1.Loaded()
         conn.Close()
     End Sub
+    Public Sub timinglabels()
+        Form1.Label28.Show()
+        Form1.Label29.Show()
+        Form1.Label30.Show()
+        Form1.Label19.Show()
+        Form1.Label18.Show()
+        Form1.Label17.Show()
+        Form1.Label24.Show()
+        Form1.Label25.Show()
+        Form1.Label26.Show()
+        Form1.Label27.Show()
+        Form1.Label31.Show()
+        Form1.Label32.Show()
+        Form1.Label33.Show()
+        Form1.LineShape60.Show()
+        Form1.LineShape61.Show()
+        Form1.LineShape62.Show()
+        Form1.LineShape63.Show()
+        Form1.LineShape64.Show()
+        Form1.LineShape65.Show()
+        Form1.LineShape66.Show()
+        Form1.LineShape67.Show()
+        Form1.LineShape68.Show()
+        Form1.LineShape69.Show()
+        Form1.LineShape32.Show()
+        Form1.LineShape36.Show()
+        Form1.LineShape37.Show()
+        Form1.LineShape35.Show()
+        Form1.LineShape33.Show()
+        Form1.LineShape54.Show()
+        Form1.LineShape55.Show()
+        Form1.LineShape58.Show()
+        Form1.LineShape59.Show()
+        Form1.LineShape57.Show()
+        Form1.LineShape56.Show()
+        Form1.LineShape42.Show()
+        Form1.LineShape43.Show()
+        Form1.LineShape38.Show()
+        Form1.LineShape39.Show()
+        Form1.LineShape40.Show()
+        Form1.LineShape41.Show()
+        Form1.LineShape46.Show()
+        Form1.LineShape44.Show()
+        Form1.LineShape49.Show()
+        Form1.LineShape50.Show()
+        Form1.LineShape51.Show()
+        Form1.LineShape52.Show()
+        Form1.LineShape47.Show()
+        Form1.LineShape48.Show()
+        Form1.LineShape53.Show()
+        Form1.LineShape34.Show()
+        Form1.LineShape45.Show()
 
+    End Sub
+    Public Sub timingaddress()
+        Form1.Label33.Text = Form1.ListBox2.Items(index:=4)
+        hex = Form1.ListBox1.Items(index:=4)
+        Form1.Label31.Text = hex(0) & hex(1)
+        Form1.Label32.Text = hex(2) & hex(3)
+
+    End Sub
 End Module

@@ -3,6 +3,7 @@ Imports System.Drawing
 Imports System.Drawing.Text
 Public Class Form1
     '----------------'
+    Dim time As Boolean = True
     Public flag As Integer = 1             ' Counter
     Dim tem As String
     Dim i As Integer = 0
@@ -86,6 +87,10 @@ Public Class Form1
             ListBox3.Items.Add("Hardware State Changed To ON")
             Button2.Enabled = True
             preloadedPrograms()
+            Panel5.Show()
+            Button2.Show()
+            Button4.Show()
+            'Button6.Show()
         Else
             Me.ErrorProvider1.SetError(Me.Button3, "")                  'To Prevent Double Error 
             off_click()
@@ -99,7 +104,11 @@ Public Class Form1
             ListBox3.Items.Add("Hardware State Changed To OFF")
             ComboBox2.Items.Clear()
             chck = 1                                                'Prevent Null Exception If Once Closed
+            Panel5.Hide()
+            time = False
         End If
+        'timinglabels()
+
     End Sub
     Private Sub Btn_VctInt_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Btn_VctInt.Click
         If flag = 0 Then
@@ -253,6 +262,12 @@ Public Class Form1
         ListBox1.Items.Clear()
         ListBox2.Items.Clear()
         LoadProgramsToMemory()
+        If ComboBox2.SelectedIndex = -1 Then
+            MsgBox("no program loaded")
+        Else
+            Button6.Show()
+        End If
+        Button2.Enabled = True
     End Sub
 
     Private Sub Button5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button5.Click
@@ -602,5 +617,18 @@ Public Class Form1
 
     Private Sub TextBox6_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TextBox6.TextChanged
 
+    End Sub
+
+    Private Sub Button6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button6.Click
+        
+        timinglabels()
+        timingaddress()
+
+        'LineShape26.Show()
+        'LineShape27.Show()
+        'LineShape28.Show()
+        'LineShape29.Show()
+        'LineShape30.Show()
+        'LineShape31.Show()
     End Sub
 End Class

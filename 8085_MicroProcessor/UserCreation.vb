@@ -1,7 +1,7 @@
 ﻿Imports System.Data.OleDb
 Public Class UserCreation
     Dim check As Boolean = True
-    Private Sub Button1_Click(sender As System.Object, e As System.EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
         UsernameCheck()
         If TextBox1.Text = "" Or TextBox2.Text = "" Or TextBox3.Text = "" Then
             MsgBox("Enter Details", MsgBoxStyle.Critical)
@@ -60,5 +60,9 @@ Public Class UserCreation
             End If
         Next
         conn.Close()
+    End Sub
+
+    Private Sub UserCreation_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+
     End Sub
 End Class

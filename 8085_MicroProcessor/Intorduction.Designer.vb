@@ -39,11 +39,11 @@ Partial Class Intorduction
         '
         Me.Label2.AutoSize = True
         Me.Label2.BackColor = System.Drawing.Color.Transparent
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 27.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.White
-        Me.Label2.Location = New System.Drawing.Point(10, 224)
+        Me.Label2.Location = New System.Drawing.Point(0, 214)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(319, 25)
+        Me.Label2.Size = New System.Drawing.Size(529, 42)
         Me.Label2.TabIndex = 12
         Me.Label2.Text = "What is 8085 Microprocessor"
         '
@@ -51,12 +51,12 @@ Partial Class Intorduction
         '
         Me.Label4.AutoSize = True
         Me.Label4.BackColor = System.Drawing.Color.Transparent
-        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.White
-        Me.Label4.Location = New System.Drawing.Point(13, 371)
+        Me.Label4.Location = New System.Drawing.Point(2, 408)
         Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(1076, 325)
+        Me.Label4.Size = New System.Drawing.Size(1012, 240)
         Me.Label4.TabIndex = 11
         Me.Label4.Text = resources.GetString("Label4.Text")
         '
@@ -64,12 +64,12 @@ Partial Class Intorduction
         '
         Me.Label3.AutoSize = True
         Me.Label3.BackColor = System.Drawing.Color.Transparent
-        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.White
-        Me.Label3.Location = New System.Drawing.Point(13, 263)
+        Me.Label3.Location = New System.Drawing.Point(2, 258)
         Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(1232, 125)
+        Me.Label3.Size = New System.Drawing.Size(905, 144)
         Me.Label3.TabIndex = 10
         Me.Label3.Text = resources.GetString("Label3.Text")
         '
@@ -122,7 +122,7 @@ Partial Class Intorduction
         Me.LinkLabel1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LinkLabel1.ForeColor = System.Drawing.Color.White
         Me.LinkLabel1.LinkColor = System.Drawing.Color.White
-        Me.LinkLabel1.Location = New System.Drawing.Point(10, 8)
+        Me.LinkLabel1.Location = New System.Drawing.Point(842, 21)
         Me.LinkLabel1.Name = "LinkLabel1"
         Me.LinkLabel1.Size = New System.Drawing.Size(65, 25)
         Me.LinkLabel1.TabIndex = 13
@@ -149,9 +149,9 @@ Partial Class Intorduction
         Me.Panel1.Controls.Add(Me.LinkLabel4)
         Me.Panel1.Controls.Add(Me.LinkLabel3)
         Me.Panel1.Controls.Add(Me.Label1)
-        Me.Panel1.Location = New System.Drawing.Point(69, -1)
+        Me.Panel1.Location = New System.Drawing.Point(908, 12)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(555, 41)
+        Me.Panel1.Size = New System.Drawing.Size(451, 41)
         Me.Panel1.TabIndex = 18
         '
         'Intorduction
@@ -159,7 +159,7 @@ Partial Class Intorduction
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
-        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.ClientSize = New System.Drawing.Size(1364, 749)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.LinkLabel1)

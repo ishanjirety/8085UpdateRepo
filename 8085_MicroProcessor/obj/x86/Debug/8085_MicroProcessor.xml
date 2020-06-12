@@ -6,10 +6,7 @@
 </name>
 </assembly>
 <members>
-<member name="M:_8085_MicroProcessor.Form1.on_click">
-Functions'''
-
-</member><member name="P:_8085_MicroProcessor.My.Resources.Resources.ResourceManager">
+<member name="P:_8085_MicroProcessor.My.Resources.Resources.ResourceManager">
 	<summary>
   Returns the cached ResourceManager instance used by this class.
 </summary>
