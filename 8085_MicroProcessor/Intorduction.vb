@@ -31,7 +31,7 @@
             MsgBox("Logged out!")
             LinkLabel1.Show()
             Label1.Show()
-            Panel1.Location = New Point(69, -1)
+            'Panel1.Location = New Point(69, -1)
             Label1.Show()
         Else
             MsgBox("Currently Logged Out!", MsgBoxStyle.Information)

@@ -83,6 +83,9 @@ Partial Class Form1
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.Button4 = New System.Windows.Forms.Button()
         Me.Panel5 = New System.Windows.Forms.Panel()
+        Me.Label33 = New System.Windows.Forms.Label()
+        Me.Label32 = New System.Windows.Forms.Label()
+        Me.Label31 = New System.Windows.Forms.Label()
         Me.Label30 = New System.Windows.Forms.Label()
         Me.Label29 = New System.Windows.Forms.Label()
         Me.Label28 = New System.Windows.Forms.Label()
@@ -178,9 +181,6 @@ Partial Class Form1
         Me.LineShape2 = New Microsoft.VisualBasic.PowerPacks.LineShape()
         Me.Button6 = New System.Windows.Forms.Button()
         Me.ComboBox3 = New System.Windows.Forms.ComboBox()
-        Me.Label31 = New System.Windows.Forms.Label()
-        Me.Label32 = New System.Windows.Forms.Label()
-        Me.Label33 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
@@ -735,6 +735,25 @@ Partial Class Form1
         Me.Panel5.Controls.Add(Me.Label8)
         Me.Panel5.Controls.Add(Me.ShapeContainer1)
         Me.Panel5.Name = "Panel5"
+        '
+        'Label33
+        '
+        resources.ApplyResources(Me.Label33, "Label33")
+        Me.Label33.BackColor = System.Drawing.Color.Black
+        Me.Label33.ForeColor = System.Drawing.Color.LimeGreen
+        Me.Label33.Name = "Label33"
+        '
+        'Label32
+        '
+        resources.ApplyResources(Me.Label32, "Label32")
+        Me.Label32.ForeColor = System.Drawing.Color.LimeGreen
+        Me.Label32.Name = "Label32"
+        '
+        'Label31
+        '
+        resources.ApplyResources(Me.Label31, "Label31")
+        Me.Label31.ForeColor = System.Drawing.Color.LimeGreen
+        Me.Label31.Name = "Label31"
         '
         'Label30
         '
@@ -1326,25 +1345,6 @@ Partial Class Form1
         Me.ComboBox3.FormattingEnabled = True
         resources.ApplyResources(Me.ComboBox3, "ComboBox3")
         Me.ComboBox3.Name = "ComboBox3"
-        '
-        'Label31
-        '
-        resources.ApplyResources(Me.Label31, "Label31")
-        Me.Label31.ForeColor = System.Drawing.Color.LimeGreen
-        Me.Label31.Name = "Label31"
-        '
-        'Label32
-        '
-        resources.ApplyResources(Me.Label32, "Label32")
-        Me.Label32.ForeColor = System.Drawing.Color.LimeGreen
-        Me.Label32.Name = "Label32"
-        '
-        'Label33
-        '
-        resources.ApplyResources(Me.Label33, "Label33")
-        Me.Label33.BackColor = System.Drawing.Color.Black
-        Me.Label33.ForeColor = System.Drawing.Color.LimeGreen
-        Me.Label33.Name = "Label33"
         '
         'Form1
         '

@@ -1,0 +1,24 @@
+﻿Piyush:		10/6/2020 
+			correction in me.hide
+			11/6/2020
+		    timing diagram on panel5 
+			12/6/2020
+			timing diagram according to memory address done
+			load bug fixed
+
+			->bug to be fix--- unload,Writing Code Show timing Diagram, Design Correction,ON/OFF Timing Diagram Correction,Logout Bug Fix
+			12/5/2020 11:26 PM Commit Made
+
+Ishan:		11/6/2020
+			Timing Diagram Alignment
+			Timing Diagram Bugs
+			Login Page Alignment
+			Load Unload Show Timing Diagram Bugs Fixed
+			
+			17/6/2020
+			Timing Diagram When Program Is Written
+			Timing Diagram Load Button 
+			Timing Diagram When Program Is loaded 
+			Reset Clear State
+			Cannot Write Program Until Loaded Program Is Unloaded
+			Created Function ResetAll()- TO FIX BUG OF RESETTING AND RE-ENTERING MEMORY ADDRESS

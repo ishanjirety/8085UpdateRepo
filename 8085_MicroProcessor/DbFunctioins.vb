@@ -7,7 +7,11 @@ Module DbFunctioins
     Public Instructions(50) As String      'Instructioins
     Public da As New OleDbDataAdapter
     Public ds As New DataSet
-    Public conn As New OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + "Data Source=F:\8085gitclone\8085UpdateRepo-master\8085.accdb")
+    '--------------ISHAN-----------------------'
+    Public conn As New OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + "Data Source=C:\Users\ADMIN\Desktop\8085\8085.accdb")
+    '--------------PIYUSH----------------------'
+    'Public conn As New OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + "Data Source=C:\Users\ADMIN\Desktop\8085\8085.accdb")
+    '------------------------------------------'
     Public cmd As New OleDbCommand
     Public INTARRAY(100) As String
     Public decision As Boolean
@@ -323,7 +327,10 @@ Module DbFunctioins
             OPloc = dr.GetValue(3)
             OPVal = dr.GetValue(4)
         End If
-
+        Form1.ListBox1.Items.Add("            " & Form1.ComboBox2.Text)
+        Form1.ListBox2.Items.Add("            " & Form1.ComboBox2.Text)
+        Form1.ListBox1.Items.Add("-----------------------------------------------------")
+        Form1.ListBox2.Items.Add("-----------------------------------------------------")
         'Inserting Output In Instructions Table'
         cmd = New OleDbCommand("UPDATE Instructions SET Hex='" + OPVal + "' WHERE Memory='" + OPloc + "'", conn)
         cmd.ExecuteNonQuery()
@@ -400,11 +407,73 @@ Module DbFunctioins
         Form1.LineShape45.Show()
 
     End Sub
+    Public Sub timinglabelsHide()
+        Form1.Label28.Hide()
+        Form1.Label29.Hide()
+        Form1.Label30.Hide()
+        Form1.Label19.Hide()
+        Form1.Label18.Hide()
+        Form1.Label17.Hide()
+        Form1.Label24.Hide()
+        Form1.Label25.Hide()
+        Form1.Label26.Hide()
+        Form1.Label27.Hide()
+        Form1.Label31.Hide()
+        Form1.Label31.Text = Nothing                'Order Memory Address
+        Form1.Label32.Hide()
+        Form1.Label32.Text = Nothing                'Order
+        Form1.Label33.Hide()
+        Form1.Label33.Text = Nothing                'OP Read Lable
+        Form1.LineShape60.Hide()
+        Form1.LineShape61.Hide()
+        Form1.LineShape62.Hide()
+        Form1.LineShape63.Hide()
+        Form1.LineShape64.Hide()
+        Form1.LineShape65.Hide()
+        Form1.LineShape66.Hide()
+        Form1.LineShape67.Hide()
+        Form1.LineShape68.Hide()
+        Form1.LineShape69.Hide()
+        Form1.LineShape32.Hide()
+        Form1.LineShape36.Hide()
+        Form1.LineShape37.Hide()
+        Form1.LineShape35.Hide()
+        Form1.LineShape33.Hide()
+        Form1.LineShape54.Hide()
+        Form1.LineShape55.Hide()
+        Form1.LineShape58.Hide()
+        Form1.LineShape59.Hide()
+        Form1.LineShape57.Hide()
+        Form1.LineShape56.Hide()
+        Form1.LineShape42.Hide()
+        Form1.LineShape43.Hide()
+        Form1.LineShape38.Hide()
+        Form1.LineShape39.Hide()
+        Form1.LineShape40.Hide()
+        Form1.LineShape41.Hide()
+        Form1.LineShape46.Hide()
+        Form1.LineShape44.Hide()
+        Form1.LineShape49.Hide()
+        Form1.LineShape50.Hide()
+        Form1.LineShape51.Hide()
+        Form1.LineShape52.Hide()
+        Form1.LineShape47.Hide()
+        Form1.LineShape48.Hide()
+        Form1.LineShape53.Hide()
+        Form1.LineShape34.Hide()
+        Form1.LineShape45.Hide()
+
+    End Sub
     Public Sub timingaddress()
+        Form1.Label33.Text = Form1.ListBox2.Items(index:=6)
+        hex = Form1.ListBox1.Items(index:=6)
+        Form1.Label31.Text = hex(0) & hex(1)
+        Form1.Label32.Text = hex(2) & hex(3)
+    End Sub
+    Public Sub timingaddressWritten()
         Form1.Label33.Text = Form1.ListBox2.Items(index:=4)
         hex = Form1.ListBox1.Items(index:=4)
         Form1.Label31.Text = hex(0) & hex(1)
         Form1.Label32.Text = hex(2) & hex(3)
-
     End Sub
 End Module

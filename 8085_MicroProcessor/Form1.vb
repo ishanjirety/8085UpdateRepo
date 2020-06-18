@@ -22,12 +22,21 @@ Public Class Form1
     Dim indexCount As Integer = 0
     Dim SaveSignal As Boolean = False
     '-----------------'
+    Dim loadedProg As Boolean = False
+    Dim programloaded As Boolean = False
+    Dim keydown As Boolean = False       'To Determine Wether A Key Is Pressed Or Not
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        'Fnt()
+        Fnt()
         Rst_Off()
         dis()
         shft = 0
+        Panel5.Show()
+        Button2.Show()
+        Button4.Show()
+        Button4.Enabled = False
+        Button2.Enabled = False
         Me.KeyPreview = True
+        Button6.Show()
         Label6.Text = "Hardware State OFF"
         Label6.ForeColor = Color.Maroon
         EraseData()
@@ -71,11 +80,15 @@ Public Class Form1
             el85()
             strt = 0
             shft = 0
-            indexCount = 0
-            'ListBox1.Items.Clear()
-            'ListBox2.Items.Clear()
+            indexCount = -1
+            ListBox1.Items.Clear()
+            ListBox2.Items.Clear()
             ListBox3.Items.Add("Reset Button Clicked")
+            ResetAll()   'Function Resets Every Counter And Array Present To Prevent Overlapping Of Addresses And Counts
             Me.ErrorProvider1.SetError(Me.Button3, "")
+            If programloaded = True Then
+                timinglabelsHide()
+            End If
         End If
     End Sub
     Private Sub Btn2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Btn2.Click    'On Off
@@ -87,9 +100,8 @@ Public Class Form1
             ListBox3.Items.Add("Hardware State Changed To ON")
             Button2.Enabled = True
             preloadedPrograms()
-            Panel5.Show()
-            Button2.Show()
-            Button4.Show()
+            Button2.Enabled = True
+            Button6.Enabled = True
             'Button6.Show()
         Else
             Me.ErrorProvider1.SetError(Me.Button3, "")                  'To Prevent Double Error 
@@ -103,8 +115,11 @@ Public Class Form1
             Array.Clear(Instructions, 0, Instructions.Length)
             ListBox3.Items.Add("Hardware State Changed To OFF")
             ComboBox2.Items.Clear()
+            ComboBox2.Text = Nothing
+            timinglabelsHide()
+            Button2.Enabled = False
+            Button6.Enabled = False
             chck = 1                                                'Prevent Null Exception If Once Closed
-            Panel5.Hide()
             time = False
         End If
         'timinglabels()
@@ -157,15 +172,20 @@ Public Class Form1
                 SaveSignal = True
                 el85()
                 TextBox7.Text = "8"
+                Me.ErrorProvider1.SetError(Me.Button6, "")
             End If
         End If
     End Sub
     Private Sub Btn_RelEXmem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Btn_RelEXmem.Click
         If flag = 0 Then
-            Rst_Off()
-            TextBox5.ForeColor = Color.Red
-            TextBox5.Text = "."
-            strt = 1
+            If loadedProg = True Then
+                MsgBox("Unloaded Loaded Program", MsgBoxStyle.Critical)
+            Else
+                Rst_Off()
+                TextBox5.ForeColor = Color.Red
+                TextBox5.Text = "."
+                strt = 1
+            End If
         End If
     End Sub
     Private Sub Btn_InsBM_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Btn_InsBM.Click
@@ -259,15 +279,23 @@ Public Class Form1
         ListBox3.Items.Clear()
     End Sub
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
-        ListBox1.Items.Clear()
-        ListBox2.Items.Clear()
-        LoadProgramsToMemory()
-        If ComboBox2.SelectedIndex = -1 Then
-            MsgBox("no program loaded")
-        Else
-            Button6.Show()
+        If loadedProg = False Then
+            If ComboBox2.SelectedIndex = -1 Then
+                MsgBox("NO PROGRAM SELECTED", MsgBoxStyle.Exclamation)
+            Else
+                Dim msg As Integer = MsgBox("Your Progress Might Get Overwritten Are You Sure To Load This Program", MsgBoxStyle.OkCancel)
+                If msg = DialogResult.OK Then
+                    ListBox1.Items.Clear()
+                    ListBox2.Items.Clear()
+                    LoadProgramsToMemory()
+                    Button6.Enabled = True
+                    Button4.Enabled = True
+                    loadedProg = True
+                    Button2.Enabled = False
+                    programloaded = True
+                End If
+            End If
         End If
-        Button2.Enabled = True
     End Sub
 
     Private Sub Button5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button5.Click
@@ -374,20 +402,20 @@ Public Class Form1
         End If
     End Sub
     '''Functions'''
-    Public Sub on_click()       'ON BUTTON
+    Public Sub on_click()                   'ON BUTTON
         en()
         Rst()
         el85()
         flag = 0
         Btn2.BackgroundImage = My.Resources.download2
     End Sub
-    Public Sub off_click()       'OFF BUTTON
+    Public Sub off_click()                  'OFF BUTTON
         Rst_Off()
         dis()
         flag = 1
         Btn2.BackgroundImage = My.Resources.download1
     End Sub
-    Public Sub aa()             'DUMMY MEMORY DISPLAY AAAA AA
+    Public Sub aa()                         'DUMMY MEMORY DISPLAY AAAA AA
         TextBox8.ForeColor = Color.Red
         TextBox7.ForeColor = Color.Red
         TextBox6.ForeColor = Color.Red
@@ -401,7 +429,7 @@ Public Class Form1
         TextBox7.Text = "A."
         TextBox8.Text = "A."
     End Sub
-    Public Sub Rst()            'RESET IN ON STATE
+    Public Sub Rst()                        'RESET IN ON STATE
         TextBox8.ForeColor = Color.Red
         TextBox7.ForeColor = Color.Red
         TextBox6.ForeColor = Color.Red
@@ -415,7 +443,7 @@ Public Class Form1
         TextBox7.Text = "8."
         TextBox8.Text = "8."
     End Sub
-    Public Sub Rst_Off()        'RESET OFF STATE
+    Public Sub Rst_Off()                     'RESET OFF STATE
         TextBox8.ForeColor = Color.Firebrick
         TextBox7.ForeColor = Color.Firebrick
         TextBox6.ForeColor = Color.Firebrick
@@ -429,7 +457,7 @@ Public Class Form1
         TextBox7.Text = "8."
         TextBox8.Text = "8."
     End Sub
-    Public Sub clr()        'CLEAR TEXTBOX
+    Public Sub clr()                         'CLEAR TEXTBOX
         TextBox3.Text = Nothing
         TextBox4.Text = Nothing
         TextBox5.Text = Nothing
@@ -437,7 +465,7 @@ Public Class Form1
         TextBox7.Text = Nothing
         TextBox8.Text = Nothing
     End Sub
-    Public Sub err()        'ERROR SHOW
+    Public Sub err()                        'ERROR SHOW
         TextBox7.Text = "E"
         TextBox6.Text = "r"
         TextBox5.Text = "r."
@@ -445,7 +473,7 @@ Public Class Form1
         TextBox4.ForeColor = Color.Firebrick
         TextBox3.ForeColor = Color.Firebrick
     End Sub
-    Public Sub el85()       'EL85 SHOW
+    Public Sub el85()                       'EL85 SHOW
         TextBox3.Text = "5"
         TextBox4.Text = "8"
         TextBox5.Text = "L"
@@ -453,7 +481,7 @@ Public Class Form1
         TextBox8.Text = "-"
         TextBox7.ForeColor = Color.Firebrick
     End Sub
-    Public Sub Fnt()        'FONT INITIALISATION
+    Public Sub Fnt()                        'FONT INITIALISATION
         Dim pfc As New PrivateFontCollection
         pfc.AddFontFile("C:\Users\ADMIN\Desktop\8085-master\GitUpload\8085_MicroProcessor\Resources\DSEG7Modern-Bold.ttf")
         TextBox3.Font = New Font(pfc.Families(0), 28, FontStyle.Bold)
@@ -463,7 +491,7 @@ Public Class Form1
         TextBox7.Font = New Font(pfc.Families(0), 28, FontStyle.Bold)
         TextBox8.Font = New Font(pfc.Families(0), 28, FontStyle.Bold)
     End Sub
-    Public Sub dis()        'HARDWARE OFF STATE
+    Public Sub dis()                       'HARDWARE OFF STATE
         TextBox3.Enabled = False
         TextBox4.Enabled = False
         TextBox5.Enabled = False
@@ -471,7 +499,7 @@ Public Class Form1
         TextBox7.Enabled = False
         TextBox8.Enabled = False
     End Sub
-    Public Sub en()         'HARDWARE ON STATE
+    Public Sub en()                         'HARDWARE ON STATE
         TextBox3.Enabled = True
         TextBox4.Enabled = True
         TextBox5.Enabled = True
@@ -523,7 +551,9 @@ Public Class Form1
                     temp(3) = e.KeyChar
                     TextBox5.Text = e.KeyChar
                     strt = strt + 1
+
                     'Address Array Input
+
                     If TextBox8.Text <> "8." Then
                         AddIP()
                     Else
@@ -538,7 +568,6 @@ Public Class Form1
         End If
     End Sub
     Public Sub AddIP()              'Address Input
-        'MemLocation(i) = TextBox8.Text & TextBox7.Text & TextBox6.Text & TextBox5.Text
         MemLocation(i) = temp(0) & temp(1) & temp(2) & temp(3)
         ListBox1.Items.Add(MemLocation(i))
         i = i + 1
@@ -548,10 +577,9 @@ Public Class Form1
         Instructions(n) = temp1(0).ToUpper & temp1(1).ToUpper
         syntax_array(n) = temp1(0).ToUpper & temp1(1).ToUpper
         ListBox2.Items.Add(Instructions(n))
-
         n = n + 1
     End Sub
-    Public Sub rdy1(ByVal e)
+    Public Sub rdy1(ByVal e)        'Reads Memory Input From User
         If flag = 0 Then
             If strt = 0 Then
                 TextBox4.ForeColor = Color.Red
@@ -576,15 +604,15 @@ Public Class Form1
                 strt = 0
                 InstIP()                'Storing Input
             End If
-        End If
+            End If
     End Sub
-    Public Sub temparrange()
+    Public Sub temparrange()    'Puts Addresses And Arranges In display
         TextBox8.Text = temp(0)
         TextBox7.Text = temp(1)
         TextBox6.Text = temp(2)
         TextBox5.Text = temp(3)
     End Sub
-    Public Sub Loaded()
+    Public Sub Loaded()         'Outputs LOADED In Display
         TextBox8.Text = "L"
         TextBox7.ForeColor = Color.Red
         TextBox7.Text = "O"
@@ -592,9 +620,8 @@ Public Class Form1
         TextBox5.Text = "D"
         TextBox4.Text = "E"
         TextBox3.Text = "D"
-        Button2.Enabled = False
     End Sub
-    Public Sub UnLoaded()
+    Public Sub UnLoaded()       'Outputs UNLOAD In Display
         TextBox8.Text = "U"
         TextBox7.ForeColor = Color.Red
         TextBox7.Text = "N"
@@ -602,33 +629,54 @@ Public Class Form1
         TextBox5.Text = "O"
         TextBox4.Text = "A"
         TextBox3.Text = "D"
-
+    End Sub
+    Public Sub ResetAll()       'Function Resets Every Counter And Array Present To Prevent Overlapping Of Addresses And Counts
+        Array.Clear(MemLocation, 0, MemLocation.Length)
+        Array.Clear(Instructions, 0, Instructions.Length)
+        Array.Clear(temp, 0, temp.Length)
+        Array.Clear(temp1, 0, temp1.Length)
+        i = 0
+        n = 0
+        count = 0
+        shft = 0
+        strt = 0
+        rdy = 0
+        cnt = 0
+        indexCount = 0
+        syntax_chk = 0
     End Sub
 
     Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
-        Dim msg As Integer = MsgBox("Are You Sure You Want To Unload This Code This Will Erase All Current Codes!!", MsgBoxStyle.OkCancel)
-        If msg = DialogResult.OK Then
-            Button2.Enabled = True
-            EraseData()
-            UnLoaded()
-            Button5.PerformClick()
+        If loadedProg = True Then
+            Dim msg As Integer = MsgBox("Are You Sure You Want To Unload This Code This Will Erase All Current Codes!!", MsgBoxStyle.OkCancel)
+            If msg = DialogResult.OK Then
+                Button2.Enabled = True
+                EraseData()
+                UnLoaded()
+                Button5.PerformClick()
+                timinglabelsHide()
+                loadedProg = False
+                Button4.Enabled = False
+                Button2.Enabled = True
+                Button6.Enabled = False
+            End If
+        Else
+            MsgBox("No Program Loaded Yet", MsgBoxStyle.Exclamation)
         End If
     End Sub
-
-    Private Sub TextBox6_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TextBox6.TextChanged
-
-    End Sub
-
     Private Sub Button6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button6.Click
-        
-        timinglabels()
-        timingaddress()
-
-        'LineShape26.Show()
-        'LineShape27.Show()
-        'LineShape28.Show()
-        'LineShape29.Show()
-        'LineShape30.Show()
-        'LineShape31.Show()
+        If flag = 0 Then                'If Hardware Is Not Powered ON
+            If SaveSignal = True And programloaded = False Then   'If GO Pressed Means Code Written
+                timingaddressWritten()
+                timinglabels()
+            Else
+                If programloaded = True Then                                        'Else Code Loaded  
+                    timinglabels()
+                    timingaddress()
+                Else
+                    Me.ErrorProvider1.SetError(Me.Button6, "Program Not Loaded Neither Written")
+                End If
+            End If
+        End If
     End Sub
 End Class
