@@ -147,6 +147,12 @@
     <Compile Include="SaveWindow.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="SystemInformation.Designer.vb">
+      <DependentUpon>SystemInformation.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SystemInformation.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="UserCreation.Designer.vb">
       <DependentUpon>UserCreation.vb</DependentUpon>
     </Compile>
@@ -185,6 +191,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SaveWindow.resx">
       <DependentUpon>SaveWindow.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemInformation.resx">
+      <DependentUpon>SystemInformation.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserCreation.resx">
       <DependentUpon>UserCreation.vb</DependentUpon>

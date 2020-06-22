@@ -105,3 +105,4 @@ C:\Users\ADMIN\Desktop\8085\8085_MicroProcessor\obj\x86\Debug\_8085_MicroProcess
 C:\Users\ADMIN\Desktop\8085\8085_MicroProcessor\obj\x86\Debug\_8085_MicroProcessor.Form1.en.resources
 C:\Users\ADMIN\Desktop\8085\8085_MicroProcessor\obj\x86\Debug\8085_MicroProcessor.vbproj.GenerateResource.Cache
 C:\Users\ADMIN\Desktop\8085\8085_MicroProcessor\obj\x86\Debug\en\8085_MicroProcessor.resources.dll
+C:\Users\ADMIN\Desktop\8085\8085_MicroProcessor\obj\x86\Debug\_8085_MicroProcessor.SystemInformation.resources

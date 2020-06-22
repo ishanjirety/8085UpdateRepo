@@ -19,7 +19,7 @@
 
     Private Sub LinkLabel2_LinkClicked_1(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs) Handles LinkLabel2.LinkClicked
         If login = True Then
-            Form1.Show()
+            SystemInformation.Show()
         Else
             MsgBox("You Need To Login!", MsgBoxStyle.Critical)
         End If
