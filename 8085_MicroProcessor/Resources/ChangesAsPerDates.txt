@@ -1,0 +1,6 @@
+﻿Ishan: Tue 9 Jun 2020 4:19 PM
+	  1) Added Activation Key
+	  2)Added Preload Program function
+	  3)Added Usercreation
+	  4)Fixed Bugs
+	  5)Design Changes
